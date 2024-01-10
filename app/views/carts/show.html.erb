@@ -1,10 +1,14 @@
-<p style="color: green"><%= notice %></p>
+<% if notice %>
+  <aside id="notice"> <%= notice %> </aside>
+  <% end %>
 
-<%= render @cart %>
+<h1>Your cart</h1>
 
-<div>
-  <%= link_to "Edit this cart", edit_cart_path(@cart) %> |
-  <%= link_to "Back to carts", carts_path %>
-
-  <%= button_to "Destroy this cart", @cart, method: :delete %>
-</div>
+<ul>
+  <% @cart.line_items.each do |item| %>
+   <li>
+    <%= item.quantity %> &times;  <%=item.product.title %>
+   </li>
+  <%end %>
+  <h1>Hello there</h1>
+</ul>
